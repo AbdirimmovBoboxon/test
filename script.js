@@ -68,30 +68,16 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.55 });
 sections.forEach(sec => navObserver.observe(sec));
 
-
-
-    if (!emailRegex.test(email)) {
-      e.preventDefault();
-      status.textContent = 'Please enter a valid email address.';
-      status.style.color = '#ffb4b4';
-      return;
-    }
-
-    status.textContent = 'Sending your message...';
-    status.style.color = '#5de3ff';
-  });
-}
-
-// Light parallax for hero visual
+// Enhanced mouse-based parallax for hero visual
 const root = document.documentElement;
 window.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5);
-  const y = (e.clientY / window.innerHeight - 0.5);
+  const x = (e.clientX / window.innerWidth - 0.5) * 2;
+  const y = (e.clientY / window.innerHeight - 0.5) * 2;
   root.style.setProperty('--parallax-x', x.toFixed(3));
   root.style.setProperty('--parallax-y', (-y).toFixed(3));
 });
 
-// Starfield animation (background stars)
+// Enhanced starfield with depth and realistic stars
 const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
 let stars = [];
@@ -101,39 +87,123 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 
-function createStars(count = 320) {
-  stars = new Array(count).fill().map(() => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 1.6 + 0.4,
-    speed: Math.random() * 0.25 + 0.04,
-    alpha: Math.random() * 0.5 + 0.35,
-    twinkle: Math.random() * 0.8 + 0.2,
-    phase: Math.random() * Math.PI * 2,
-    drift: (Math.random() - 0.5) * 0.04
-  }));
+function createStars(count = 400) {
+  stars = [];
+  
+  // Create multi-layer starfield for depth perception
+  // Distant stars (small, subtle)
+  for (let i = 0; i < count * 0.4; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 0.6 + 0.2,
+      speed: Math.random() * 0.08 + 0.02,
+      alpha: Math.random() * 0.3 + 0.15,
+      twinkle: Math.random() * 0.6 + 0.1,
+      phase: Math.random() * Math.PI * 2,
+      drift: (Math.random() - 0.5) * 0.02,
+      depth: 0.3,
+      color: ['#ffffff', '#e3f2fd', '#bbdefb'][Math.floor(Math.random() * 3)]
+    });
+  }
+  
+  // Mid-range stars (medium brightness)
+  for (let i = 0; i < count * 0.35; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 1.2 + 0.5,
+      speed: Math.random() * 0.12 + 0.04,
+      alpha: Math.random() * 0.5 + 0.35,
+      twinkle: Math.random() * 0.8 + 0.15,
+      phase: Math.random() * Math.PI * 2,
+      drift: (Math.random() - 0.5) * 0.03,
+      depth: 0.6,
+      color: '#ffffff'
+    });
+  }
+  
+  // Bright stars (foreground)
+  for (let i = 0; i < count * 0.25; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 1.8 + 0.8,
+      speed: Math.random() * 0.18 + 0.06,
+      alpha: Math.random() * 0.7 + 0.4,
+      twinkle: Math.random() * 1 + 0.2,
+      phase: Math.random() * Math.PI * 2,
+      drift: (Math.random() - 0.5) * 0.04,
+      depth: 1,
+      color: ['#ffffff', '#5de3ff', '#a78bfa'][Math.floor(Math.random() * 3)]
+    });
+  }
 }
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
+  
   stars.forEach(star => {
-    star.phase += 0.02;
-    const twinkle = star.alpha + Math.sin(star.phase) * 0.15 * star.twinkle;
-    ctx.globalAlpha = Math.min(1, Math.max(0.1, twinkle));
+    star.phase += 0.015;
+    
+    // Twinkle effect
+    const twinkleAmount = Math.sin(star.phase) * 0.15 * star.twinkle;
+    const finalAlpha = Math.min(1, Math.max(0.05, star.alpha + twinkleAmount));
+    
+    // Set color based on star type
+    ctx.fillStyle = star.color || '#ffffff';
+    ctx.globalAlpha = finalAlpha;
+    
+    // Draw star with slight glow
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();
-    star.y += star.speed;
+    
+    // Add subtle glow for brighter stars
+    if (star.depth > 0.6) {
+      ctx.globalAlpha = finalAlpha * 0.3;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
+    // Slow downward drift (space dust falling)
+    star.y += star.speed * 0.3;
     star.x += star.drift;
-    if (star.y > canvas.height) star.y = -2;
-    if (star.x > canvas.width) star.x = 0;
-    if (star.x < 0) star.x = canvas.width;
+    
+    // Wrap around edges
+    if (star.y > canvas.height + 10) {
+      star.y = -10;
+      star.x = Math.random() * canvas.width;
+    }
+    if (star.x > canvas.width + 10) {
+      star.x = -10;
+    }
+    if (star.x < -10) {
+      star.x = canvas.width + 10;
+    }
   });
+  
+  ctx.globalAlpha = 1;
   requestAnimationFrame(drawStars);
 }
 
+// Initialize starfield
 resizeCanvas();
 createStars();
 drawStars();
-window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
+
+// Recreate stars on resize
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  createStars();
+});
+
+// Optional: Form validation (keeping existing logic structure)
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  const status = contactForm.querySelector('.form-status');
+  
+  // You can add additional client-side validation here if needed
+  // The form already submits to formsubmit.co which handles validation
+}
