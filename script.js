@@ -68,24 +68,7 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.55 });
 sections.forEach(sec => navObserver.observe(sec));
 
-// Contact form validation (front-end only)
-const form = document.getElementById('contact-form');
-const status = document.querySelector('.form-status');
 
-if (form) {
-  form.addEventListener('submit', (e) => {
-    const formData = new FormData(form);
-    const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
-    const message = formData.get('message').trim();
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-    if (!name || !email || !message) {
-      e.preventDefault();
-      status.textContent = 'Please fill in all fields.';
-      status.style.color = '#ffb4b4';
-      return;
-    }
 
     if (!emailRegex.test(email)) {
       e.preventDefault();
