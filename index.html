@@ -10,9 +10,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Starfield canvas sits behind everything -->
+  <!-- Deep space background -->
   <canvas id="starfield" aria-hidden="true"></canvas>
   <div class="space-fog" aria-hidden="true"></div>
+  <div class="nebula-glow" aria-hidden="true"></div>
   <div class="particle-layer" aria-hidden="true"></div>
 
   <header class="navbar" id="navbar">
@@ -33,9 +34,9 @@
     <!-- Hero -->
     <section id="home" data-section class="section hero">
       <div class="hero__content">
-        <div class="eyebrow">Hello, I’m</div>
+        <div class="eyebrow">Hello, I'm</div>
         <h1>Abdirimov Boboxon</h1>
-        <p class="role">I’m a <span id="role-text" class="accent"></span></p>
+        <p class="role">I'm a <span id="role-text" class="accent"></span></p>
         <p class="subtitle">I build clean, modern, and user-friendly mobile and web experiences.</p>
         <div class="hero-meta">
           <div class="meta-block">
@@ -80,10 +81,12 @@
             <div class="ring ring-back"></div>
             <div class="planet">
               <div class="planet-texture"></div>
+              <div class="planet-shadow"></div>
               <div class="planet-glow"></div>
             </div>
             <div class="ring ring-front"></div>
           </div>
+          <div class="light-source"></div>
         </div>
       </div>
     </section>
@@ -94,7 +97,7 @@
         <p class="eyebrow">Who Am I?</p>
         <h2>About Me</h2>
       </div>
-      <p class="body-text">I’m Abdirimov Boboxon, a beginner mobile developer driven by curiosity and a love for creating smooth, beautiful digital products. I focus on iOS and Android applications, modern software technologies, and clean user interfaces. My goal is to craft useful experiences, ship polished features, and keep learning every day.</p>
+      <p class="body-text">I'm Abdirimov Boboxon, a beginner mobile developer driven by curiosity and a love for creating smooth, beautiful digital products. I focus on iOS and Android applications, modern software technologies, and clean user interfaces. My goal is to craft useful experiences, ship polished features, and keep learning every day.</p>
       <div class="about-grid">
         <div class="about-card">
           <h3>Passions</h3>
