@@ -3,65 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abdirimov Boboxon | Mobile Developer Portfolio</title>
+  <title>Abdirimov Boboxon | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Starfield canvas sits behind everything -->
+  <!-- Cosmic starfield canvas -->
   <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="space-fog" aria-hidden="true"></div>
-  <div class="particle-layer" aria-hidden="true"></div>
 
-  <header class="navbar" id="navbar">
-    <div class="logo">Boboxon</div>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav-links">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Boboxon</div>
+      <nav id="nav-menu" class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main>
     <!-- Hero -->
-    <section id="home" data-section class="section hero">
-      <div class="hero__content">
-        <div class="eyebrow">Hello, I’m</div>
-        <h1>Abdirimov Boboxon</h1>
-        <p class="role">I’m a <span id="role-text" class="accent"></span></p>
-        <p class="subtitle">I build clean, modern, and user-friendly mobile and web experiences.</p>
-        <div class="hero-meta">
-          <div class="meta-block">
-            <span class="meta-label">Specialty</span>
-            <span class="meta-value">iOS · Android · Flutter</span>
+    <section id="home" class="hero section">
+      <div class="hero-bg">
+        <div class="planet">
+          <div class="planet-core"></div>
+          <div class="planet-ring"></div>
+          <div class="planet-glow"></div>
+        </div>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <p class="eyebrow">Hello, I’m</p>
+          <h1>Abdirimov Boboxon</h1>
+          <p class="typing"> <span id="typed"></span> </p>
+          <p class="subtitle">I build clean, modern, and user-friendly mobile and web experiences.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn primary">Hire Me</a>
+            <a href="#projects" class="btn ghost">View Projects</a>
           </div>
-          <div class="meta-block">
-            <span class="meta-label">Location</span>
-            <span class="meta-value">Uzbekistan · Remote</span>
+          <div class="socials">
+            <a href="https://github.com" aria-label="GitHub" class="icon-btn" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.1-1.2-1.4-1.2-1.4-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 2.2 2.9 1.6.1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            </a>
+            <a href="https://t.me" aria-label="Telegram" class="icon-btn" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.6 9.3 19c.4 0 .6-.2.8-.4l2-1.9 4.2 3.1c.8.4 1.3.2 1.5-.7l2.8-13c.2-.9-.3-1.3-1-.9L2.7 10c-.9.4-.9.9-.2 1.2l4.5 1.4 10.5-6.6c.5-.3.9-.1.6.2Z"/></svg>
+            </a>
+            <a href="mailto:abdirimovboboxon2@gmail.com" aria-label="Email" class="icon-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h18c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H3Zm0 2.2 9 5.6 9-5.6V18H3V7.2Zm0-1.2h18-18Z"/></svg>
+            </a>
           </div>
         </div>
-        <div class="hero__actions">
-          <a class="btn primary" href="#contact">Hire Me</a>
-          <a class="btn ghost" href="#projects">View Projects</a>
+        <div class="hero-card">
+          <div class="glass">
+            <p class="tag">Mobile Developer</p>
+            <p class="tag">iOS & Android</p>
+            <p class="tag">Web Enthusiast</p>
+            <p class="mini">Currently crafting premium experiences.</p>
+          </div>
         </div>
-        <div class="socials" aria-label="Social links">
-          <a href=https://github.com/AbdirimmovBoboxon target="_blank" rel="noreferrer" aria-label="GitHub" class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 3.77 5.07 5.07 0 0 0 17.91 1S16.73.65 13 2.48a13.38 13.38 0 0 0-8 0C1.27.65.09 1 .09 1A5.07 5.07 0 0 0 0 3.77 5.44 5.44 0 0 0 1.5 7.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 7 17.13V21"></path></svg>
-          </a>
-          <a href="https://t.me/Abdirimov_Boboxon" target="_blank" rel="noreferrer" aria-label="Telegram" class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21.5 4.5 3.9 11.2c-.7.3-.7 1.3.1 1.5l4.3 1.3 1.6 5c.2.7 1.1.8 1.5.1l2-3.3 4.4 3.2c.6.4 1.4.1 1.6-.6l3-12c.2-.8-.5-1.4-1.3-1.1Z"/></svg>
-          </a>
-          <a href="mailto:abdirimovboboxon2@gmail.com" aria-label="Email" class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="m22 7-10 6L2 7"/></svg>
-          </a>
-        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container section-header">
+        <p class="eyebrow">Who Am I?</p>
+        <h2>About Me</h2>
+        <p class="section-sub">I’m Abdirimov Boboxon, a beginner developer focused on building elegant mobile and web products. I love modern software technologies, clean UI, and creating useful digital experiences while continuously learning and growing.</p>
         <div class="skills">
           <span class="chip">Flutter</span>
           <span class="chip">Dart</span>
@@ -74,70 +90,32 @@
           <span class="chip">GitHub</span>
         </div>
       </div>
-      <div class="hero__visual" aria-hidden="true">
-        <div class="saturn-wrap">
-          <div class="saturn">
-            <div class="ring ring-back"></div>
-            <div class="planet">
-              <div class="planet-texture"></div>
-              <div class="planet-glow"></div>
-            </div>
-            <div class="ring ring-front"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" data-section class="section about reveal">
-      <div class="section-head">
-        <p class="eyebrow">Who Am I?</p>
-        <h2>About Me</h2>
-      </div>
-      <p class="body-text">I’m Abdirimov Boboxon, a beginner mobile developer driven by curiosity and a love for creating smooth, beautiful digital products. I focus on iOS and Android applications, modern software technologies, and clean user interfaces. My goal is to craft useful experiences, ship polished features, and keep learning every day.</p>
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>Passions</h3>
-          <ul>
-            <li>Mobile development for iOS & Android</li>
-            <li>Modern UI and motion design</li>
-            <li>Building helpful digital products</li>
-            <li>Continuous learning & growth</li>
-          </ul>
-        </div>
-        <div class="about-card">
-          <h3>Core Stack</h3>
-          <div class="skill-cloud">
-            <span>Flutter</span><span>Dart</span><span>Java</span><span>Kotlin</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span><span>GitHub</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Services -->
-    <section id="services" data-section class="section services reveal">
-      <div class="section-head">
+    <section id="services" class="section">
+      <div class="container section-header">
         <p class="eyebrow">What I Do?</p>
         <h2>Services</h2>
       </div>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-icon">📱</div>
+      <div class="container cards grid-4">
+        <article class="card service">
+          <div class="icon-circle">📱</div>
           <h3>Mobile App Development</h3>
           <p>Creating modern, responsive, and user-friendly mobile applications.</p>
         </article>
-        <article class="card">
-          <div class="card-icon">🍏</div>
+        <article class="card service">
+          <div class="icon-circle"></div>
           <h3>iOS Development</h3>
           <p>Building elegant and optimized applications for Apple devices.</p>
         </article>
-        <article class="card">
-          <div class="card-icon">🤖</div>
+        <article class="card service">
+          <div class="icon-circle">🤖</div>
           <h3>Android Development</h3>
           <p>Developing smooth and scalable Android applications with clean UI.</p>
         </article>
-        <article class="card">
-          <div class="card-icon">🕸️</div>
+        <article class="card service">
+          <div class="icon-circle">🕸️</div>
           <h3>Web Site Creation</h3>
           <p>Create any web site, landing page, portfolio, or business website with modern design.</p>
         </article>
@@ -145,45 +123,45 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" data-section class="section projects reveal">
-      <div class="section-head">
+    <section id="projects" class="section">
+      <div class="container section-header">
         <p class="eyebrow">Selected Work</p>
         <h2>Projects</h2>
       </div>
-      <div class="card-grid projects-grid">
-        <article class="project-card">
-          <div class="project-visual"></div>
-          <div class="project-copy">
+      <div class="container cards grid-3">
+        <article class="card project">
+          <div class="project-thumb gradient-1"></div>
+          <div class="project-body">
             <h3>Mobile App UI</h3>
             <p>A modern responsive mobile application interface.</p>
-            <span class="tech">Flutter · Dart</span>
+            <p class="stack">Tech: Flutter • Dart • Figma</p>
             <div class="project-actions">
-              <a class="btn ghost" href="#">Live Demo</a>
-              <a class="btn subtle" href="#">GitHub</a>
+              <a href="#" class="btn ghost small">Live Demo</a>
+              <a href="#" class="btn primary small">GitHub</a>
             </div>
           </div>
         </article>
-        <article class="project-card">
-          <div class="project-visual"></div>
-          <div class="project-copy">
+        <article class="card project">
+          <div class="project-thumb gradient-2"></div>
+          <div class="project-body">
             <h3>Personal Portfolio Website</h3>
             <p>A modern developer portfolio website with animation and responsive design.</p>
-            <span class="tech">HTML · CSS · JavaScript</span>
+            <p class="stack">Tech: HTML • CSS • JavaScript</p>
             <div class="project-actions">
-              <a class="btn ghost" href="#">Live Demo</a>
-              <a class="btn subtle" href="#">GitHub</a>
+              <a href="#" class="btn ghost small">Live Demo</a>
+              <a href="#" class="btn primary small">GitHub</a>
             </div>
           </div>
         </article>
-        <article class="project-card">
-          <div class="project-visual"></div>
-          <div class="project-copy">
+        <article class="card project">
+          <div class="project-thumb gradient-3"></div>
+          <div class="project-body">
             <h3>Task Management App</h3>
             <p>A productivity application for organizing daily tasks and workflow.</p>
-            <span class="tech">Kotlin · Firebase</span>
+            <p class="stack">Tech: Kotlin • Firebase • Material UI</p>
             <div class="project-actions">
-              <a class="btn ghost" href="#">Live Demo</a>
-              <a class="btn subtle" href="#">GitHub</a>
+              <a href="#" class="btn ghost small">Live Demo</a>
+              <a href="#" class="btn primary small">GitHub</a>
             </div>
           </div>
         </article>
@@ -191,66 +169,70 @@
     </section>
 
     <!-- CTA -->
-    <section class="section cta reveal" aria-label="Work together">
-      <div class="cta-copy">
-        <p class="eyebrow">Want to work with me?</p>
-        <h2>Always feel free to contact & hire me</h2>
+    <section id="cta" class="section cta">
+      <div class="container cta-box">
+        <div>
+          <p class="eyebrow">Want to work with me?</p>
+          <h3>Always feel free to contact & hire me</h3>
+        </div>
+        <a href="#contact" class="btn primary glow">Hire Me</a>
       </div>
-      <a class="btn primary" href="#contact">Hire Me</a>
     </section>
 
     <!-- Contact -->
-    <section id="contact" data-section class="section contact reveal">
-      <div class="section-head">
+    <section id="contact" class="section">
+      <div class="container section-header">
         <p class="eyebrow">How can you communicate?</p>
         <h2>Contact Me</h2>
       </div>
-      <div class="contact-grid">
-        <form id="contact-form" class="contact-form" action="https://formsubmit.co/abdirimovboboxon2@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New Portfolio Message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="https://abdirimov.uz/#contact">
-          <label> Your Name
-            <input type="text" name="name" placeholder="Enter your name" required>
-          </label>
-          <label> Your Email
-            <input type="email" name="email" placeholder="name@email.com" required>
-          </label>
-          <label> Your Message
-            <textarea name="message" rows="4" placeholder="Write your message" required></textarea>
-          </label>
+      <div class="container contact-grid">
+        <form id="contact-form" class="card form-card">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write your message" required></textarea>
+          </div>
           <button type="submit" class="btn primary full">Send Message</button>
-          <p class="form-status" role="status"></p>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
-        <div class="contact-info">
-          <div class="info-block">
-            <h3>Email</h3>
-            <a href="mailto:abdirimovboboxon2@gmail.com">abdirimovboboxon2@gmail.com</a>
+        <div class="card contact-info">
+          <h3>Direct Contact</h3>
+          <p>Email: <a href="mailto:abdirimovboboxon2@gmail.com">abdirimovboboxon2@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com" target="_blank" rel="noreferrer">github.com/username</a></p>
+          <p>Telegram: <a href="https://t.me" target="_blank" rel="noreferrer">t.me/username</a></p>
+          <div class="contact-cta">
+            <p>Need something special? Let’s craft it.</p>
+            <a href="#services" class="btn ghost">View Services</a>
           </div>
-          <div class="info-block">
-            <h3>GitHub</h3>
-            <a href="https://github.com" target="_blank" rel="noreferrer">https://github.com/AbdirimmovBoboxon</a>
-          </div>
-          <div class="info-block">
-          <h3>Telegram</h3>
-  <a href="https://t.me/Abdirimov_Boboxon" target="_blank" rel="noreferrer">t.me/Abdirimov_Boboxon</a>
-</div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2026 Abdirimov Boboxon. All rights reserved.</p>
-    <div class="footer-links">
-      <a href=https://github.com/AbdirimmovBoboxon class="icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 3.77 5.07 5.07 0 0 0 17.91 1S16.73.65 13 2.48a13.38 13.38 0 0 0-8 0C1.27.65.09 1 .09 1A5.07 5.07 0 0 0 0 3.77 5.44 5.44 0 0 0 1.5 7.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 7 17.13V21"></path></svg>
-      </a>
-      <a href="#home" class="back-to-top">↑ Back to top</a>
+    <div class="container footer-inner">
+      <p>© 2026 Abdirimov Boboxon. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://github.com" aria-label="GitHub" class="icon-btn" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.1-1.2-1.4-1.2-1.4-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 2.2 2.9 1.6.1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        </a>
+        <a href="https://t.me" aria-label="Telegram" class="icon-btn" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.6 9.3 19c.4 0 .6-.2.8-.4l2-1.9 4.2 3.1c.8.4 1.3.2 1.5-.7l2.8-13c.2-.9-.3-1.3-1-.9L2.7 10c-.9.4-.9.9-.2 1.2l4.5 1.4 10.5-6.6c.5-.3.9-.1.6.2Z"/></svg>
+        </a>
+        <a href="#home" aria-label="Back to top" class="icon-btn back-to-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 3 13h6v7h6v-7h6Z"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
