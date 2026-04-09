@@ -68,10 +68,26 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.55 });
 sections.forEach(sec => navObserver.observe(sec));
 
+// Contact form validation (front-end only)
+const form = document.getElementById('contact-form');
+const status = document.querySelector('.form-status');
+const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+if (form && status) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const name = (formData.get('name') || '').trim();
+    const email = (formData.get('email') || '').trim();
+    const message = (formData.get('message') || '').trim();
+
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill in all fields.';
+      status.style.color = '#ffb4b4';
+      return;
+    }
 
     if (!emailRegex.test(email)) {
-      e.preventDefault();
       status.textContent = 'Please enter a valid email address.';
       status.style.color = '#ffb4b4';
       return;
@@ -79,6 +95,8 @@ sections.forEach(sec => navObserver.observe(sec));
 
     status.textContent = 'Sending your message...';
     status.style.color = '#5de3ff';
+    form.reset();
+    setTimeout(() => { status.textContent = ''; }, 3000);
   });
 }
 
